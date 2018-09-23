@@ -14,9 +14,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        textfinder.cpp
+        textfinder.cpp \
+    mongointerface.cpp
 
-HEADERS  += textfinder.h
+HEADERS  += textfinder.h \
+    mongointerface.h
 
 FORMS    += textfinder.ui
 

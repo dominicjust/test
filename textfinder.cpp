@@ -2,6 +2,8 @@
 #include "ui_textfinder.h"
 #include <QFile>
 #include <QTextStream>
+#include "mongointerface.h"
+#include <memory>
 
 TextFinder::TextFinder(QWidget *parent) :
     QMainWindow(parent),
@@ -55,4 +57,10 @@ void TextFinder::loadTextFile()
 void TextFinder::on_pushButton_2_clicked()
 {
     loadTextFile();
+}
+
+void TextFinder::on_pushButton_3_clicked()
+{
+    std::shared_ptr<MongoInterface> pMongo;
+    pMongo->doSomething();
 }
