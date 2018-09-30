@@ -1,6 +1,7 @@
 #include "textfinder.h"
 #include "ui_textfinder.h"
 #include <QFile>
+#include <QFileDialog>
 #include <QTextStream>
 #include "mongointerface.h"
 #include <memory>
@@ -28,9 +29,9 @@ void TextFinder::on_pushButton_clicked()
     }
 
     QString string = ui->textEdit->toPlainText().toLower();
-    for (const auto character : string.toAscii()) {
-        results[static_cast<const char>(character)]++;
-    }
+    //for (const auto character : string.toAscii()) {
+    //    results[static_cast<const char>(character)]++;
+    //}
 
     QString output;
     for (const auto element : results) {
@@ -40,9 +41,9 @@ void TextFinder::on_pushButton_clicked()
     }
     ui->label_2->setText(output);
 }
-void TextFinder::loadTextFile()
+void TextFinder::loadTextFile(const QString& path)
 {
-    QFile inputFile(":/input.txt");
+    QFile inputFile(path);
     inputFile.open(QIODevice::ReadOnly);
 
     QTextStream in(&inputFile);
@@ -63,4 +64,27 @@ void TextFinder::on_pushButton_3_clicked()
 {
     std::shared_ptr<MongoInterface> pMongo;
     pMongo->doSomething();
+}
+void TextFinder::on_pushButtonLoadFromFile_clicked()
+{
+   const QString fileName = QFileDialog::getOpenFileName(this,
+        tr("Open Text File"));
+   loadTextFile(fileName);
+}
+
+
+
+
+
+
+
+
+
+
+
+void TextFinder::on_actiontest_triggered()
+{
+    const QString fileName = QFileDialog::getOpenFileName(this,
+         tr("Open Text File"));
+
 }

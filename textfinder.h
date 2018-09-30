@@ -22,9 +22,13 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_pushButtonLoadFromFile_clicked();
+
+    void on_actiontest_triggered();
+
 private:
     Ui::TextFinder *ui;
-    void loadTextFile();
+    void loadTextFile(const QString& = ":/input.txt");
 };
 
 #endif // TEXTFINDER_H
